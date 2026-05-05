@@ -8,10 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        body {
-            font-family: Arial;
-            font-size: 12px;
-        }
+        body { font-family: Arial; font-size: 12px; }
 
         .form-container {
             width: 800px;
@@ -20,19 +17,10 @@
             padding: 10px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+        table { width: 100%; border-collapse: collapse; }
+        td, th { border: 1px solid black; padding: 4px; }
 
-        td,
-        th {
-            border: 1px solid black;
-            padding: 4px;
-        }
-
-        input,
-        textarea {
+        input, textarea {
             width: 100%;
             border: none;
             outline: none;
@@ -46,7 +34,6 @@
             width: 120px;
             height: 140px;
             border: 1px solid black;
-            text-align: center;
         }
 
         .photo-box img {
@@ -69,346 +56,235 @@
     </style>
 </head>
 
-<body  style="border:none;">
+<body>
 
-    <div id="errorMsg"></div>
+<div id="errorMsg"></div>
 
-    <div id="formContent" class="form-container">
+<div id="formContent" class="form-container">
 
-        <!-- HEADER -->
-        <table style="border:none;">
-            <tr>
-                <td style="border:none;"></td>
+<!-- HEADER -->
+<table style="border:none;">
+<tr>
+<td style="border:none;"></td>
+<td style="text-align:center; border:none;">
+<h2>SARASWAT BANK</h2>
+<h3>APPLICATION FORM</h3>
+</td>
+<td style="border:none;">
+<img src="https://www.indiancooperative.com/wp-content/uploads/2017/09/Saraswat-bank-new-logo.jpg" width="150">
+</td>
+</tr>
+</table>
 
-                <td style="text-align:center; border:none;">
-                    <h2>SARASWAT BANK</h2>
-                    <h3>APPLICATION FORM</h3>
-                </td>
-                <td style="width:80px; border:none;">
-                    <img src="https://www.indiancooperative.com/wp-content/uploads/2017/09/Saraswat-bank-new-logo.jpg" width="200">
-                </td>
+<hr>
 
-
-                <!-- <td style="border:none;"></td> -->
-            </tr>
-        </table>
-
-        <hr>
-
-        <!-- BASIC DETAILS -->
-        <table style="border:none;">
-            <tr>
-                <td colspan="3">Name: <input class="required"></td>
-                <td rowspan="5">
-                    <div class="photo-box">
-                        <img id="photoPreview">
-                    </div>
-                    <input type="file" accept="image/*" onchange="previewPhoto(event)">
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="3">Address: <textarea class="required"></textarea></td>
-            </tr>
-
-            <tr>
-                <td>DOB: <input type="date" class="required"></td>
-                <td>Marital Status: <input class="required"></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>Nationality: <input class="required"></td>
-                <td>Religion: <input class="required"></td>
-                <td>Caste: <input class="required"></td>
-            </tr>
-
-            <tr>
-                <td>Mobile: <input class="required"></td>
-                <td>Alt Mobile: <input></td>
-                <td>Email: <input class="required"></td>
-            </tr>
-
-            <tr>
-                <td colspan="4">Height: <input class="required"></td>
-            </tr>
-        </table>
-
-        <br>
-
-        <!-- EDUCATION -->
-        <b>Educational Qualifications</b>
-
-        <table>
-            <tr>
-                <th>Qualification</th>
-                <th>Please tick
-                the one
-                applicable</th>
-                <th>Name of School/College</th>
-                <th>Year of passing</th>
-                <th>Marks obtains</th>
-                <th>out of (Total marks)</th>
-                <th>%</th>
-                <th>Class
-                obtained
-                / CGPI</th>
-                <th>Attempt</th>
-            </tr>
-
-            <tr>
-                <td>S.S.C</td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-                                <td><input class="required"></td>
-                                                <td><input class="required"></td>
-
-
-
-            </tr>
-            <tr>
-                    <td>H.S.C</td>
-                    <td> Science/Com/Arts<input class="required"></td>
-                    <td><input class="required"></td>
-                    <td><input class="required"></td>
-                    <td><input class="required"></td>
-                    <td><input class="required"></td>
-                                    <td><input class="required"></td>
-                                                    <td><input class="required"></td>
-                <td><input class="required"></td>
-
-
-            </tr>
-            <tr>
-                        <td>Graduation</td>
-                        <td>B.Com/B.Sc/B.A<input class="required"></td>
-                        <td><input class="required"></td>
-                        <td><input class="required"></td>
-                        <td><input class="required"></td>
-                        <td><input class="required"></td>
-                                        <td><input class="required"></td>
-                                                        <td><input class="required"></td>
-                <td><input class="required"></td>
-
-
-            </tr>
-            <tr>
-                            <td>Post Graduate</td>
-                            <td>M.Com/M.B.A<input class="required"></td>
-                            <td><input class="required"></td>
-                            <td><input class="required"></td>
-                            <td><input class="required"></td>
-                            <td><input class="required"></td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-                <td><input class="required"></td>
-
-
-            </tr>
-        </table>
-
-        <br>
-
-        <!-- PROFESSIONAL EXPERIENCE/technical  -->
-
-<b>PROFESSIONAL EXPERIENCE/technical Qualifications:</b>
-
+<!-- BASIC DETAILS -->
 <table>
-    <tr>
-        <th>Name of
-        Exam
-        Passed</th>
-        <th>Year &
-        Month of
-        Passing</th>
-        <th>University/
-        Board</th>
-        <th>Name of the
-        Institution/ College</th>
-        <th>Main Subject/
-        Specialization</th>
-
-    <th>Marks
-    & %</th>
-    <th>Class
-    obtained</th>
-    <th>Attempt</th>
-    </tr>
-
-    <tr>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-    </tr>
-</table>
-
-
-
-<div style="display:flex; align-items:center; gap:15px; margin-bottom:10px;">
-<h3>Apprenticeship Experience (Starting from First apprenticeship) If Any :-</h3>
-    <label style="font-weight:bold;">
-        Are you Fresher?
-    </label>
-
-    <label>
-        <input type="radio" name="fresher" value="yes" onclick="toggleApprenticeship(false)">
-        YES
-    </label>
-
-    <label>
-        <input type="radio" name="fresher" value="no" onclick="toggleApprenticeship(true)">
-        NO
-    </label>
-
+<tr>
+<td colspan="3">Name: <input class="required"></td>
+<td rowspan="5">
+<div class="photo-box">
+<img id="photoPreview">
 </div>
-<table id="apprenticeshipSection">
-    <tr>
-        <th>From Date</th>
-        <th>To Date</th>
-        <th>Employer</th>
-        <th>Stipend per months</th>
-        <th>Designation</th>
-        <th>Nature of Work</th>
-    </tr>
+<input type="file" accept="image/*" onchange="previewPhoto(event)">
+</td>
+</tr>
 
-    <tr>
-        <td><input class="apprenticeship"></td>
-        <td><input class="apprenticeship"></td>
-        <td><input class="apprenticeship"></td>
-        <td><input class="apprenticeship"></td>
-        <td><input class="apprenticeship"></td>
-        <td><input class="apprenticeship"></td>
-    </tr>
+<tr>
+<td colspan="3">Address: <textarea class="required"></textarea></td>
+</tr>
+
+<tr>
+<td>DOB: <input type="date" class="required"></td>
+<td>Marital Status: <input class="required"></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Nationality: <input class="required"></td>
+<td>Religion: <input class="required"></td>
+<td>Caste: <input class="required"></td>
+</tr>
+
+<tr>
+<td>Mobile: <input class="required"></td>
+<td>Email: <input class="required"></td>
+<td>Height: <input class="required"></td>
+</tr>
 </table>
+
 <br>
 
-        <!-- EXPERIENCE -->
-        <b>Employment History</b>
+<!-- EDUCATION -->
+<b>Educational Qualifications</b>
+<table>
+<tr>
+<th>Qualification</th>
+<th>College</th>
+<th>Year</th>
+<th>Marks</th>
+<th>Total</th>
+<th>%</th>
+</tr>
 
-        <table>
-            <tr>
-                <th>From date </th>
-                <th>To date</th>
-                <th>Employer history </th>
-                <th>Salary</th>
-                <th>Designation</th>
-            </tr>
+<tr>
+<td>SSC</td>
+<td><input class="required"></td>
+<td><input class="required"></td>
+<td><input class="required"></td>
+<td><input class="required"></td>
+<td><input class="required"></td>
+</tr>
+</table>
 
-            <tr>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-            </tr>
-        </table>
+<br>
 
-        <br>
+<!-- APPRENTICESHIP -->
+<h3>Apprenticeship Experience</h3>
 
-        <!-- ID PROOF -->
-        <!-- <b>ID Proof Upload</b>
-        <input type="file" class="required"> -->
+<div style="display:flex; gap:20px;">
+<label><b>Are you Fresher?</b></label>
 
-        <br><br>
+<label>
+<input type="radio" name="fresher" value="yes" onclick="toggleApprenticeship(false)"> YES
+</label>
 
-        <!-- LANGUAGES -->
-        <b>Languages Known</b>
+<label>
+<input type="radio" name="fresher" value="no" onclick="toggleApprenticeship(true)"> NO
+</label>
+</div>
 
-        <table>
-            <tr>
-                <td>Read <input class="required"></td>
-                <td>Write <input class="required"></td>
-                <td>Speak <input class="required"></td>
-            </tr>
-        </table>
+<br>
 
-        <br>
+<table id="apprenticeshipSection">
+<tr>
+<th>From</th>
+<th>To</th>
+<th>Employer</th>
+<th>Stipend</th>
+<th>Designation</th>
+<th>Work</th>
+</tr>
 
-        <!-- HOBBIES -->
-        <b>Mention areas of interest / hobbies:</b>
-        <hr>
-        <p class="required">
-            I hereby declare that all statements made in the application are true, complete and correct to the best of my
-            knowledge and belief. I understand that in the event of any information being found false and incorrect, my
-            candidature is liable to be cancelled / rejected at any stage. I agree to serve the Bank at any place in India
-            or elsewhere.
-        </p>
-        <br><br>
+<tr>
+<td><input class="apprenticeship"></td>
+<td><input class="apprenticeship"></td>
+<td><input class="apprenticeship"></td>
+<td><input class="apprenticeship"></td>
+<td><input class="apprenticeship"></td>
+<td><input class="apprenticeship"></td>
+</tr>
+</table>
 
-        <!-- SIGNATURE -->
-        <table>
-            <tr>
-                <td>Date: <input type="date" class="required"></td>
-                <td>Place: <input class="required"></td>
-                <td>Signature: <input class="required"></td>
-            </tr>
-        </table>
+<br>
 
-        <br>
+<!-- LANGUAGES -->
+<b>Languages</b>
+<table>
+<tr>
+<td>Read <input class="required"></td>
+<td>Write <input class="required"></td>
+<td>Speak <input class="required"></td>
+</tr>
+</table>
 
-        <!-- FOOTER -->
-<hr style="border: 1px solid black; margin: 10px 0;">
-<span style="font-weight:bold;">For Office use</span><span>:Verified By:
-Signature & Date:</span>
+<br>
 
-    </div>
+<!-- DECLARATION -->
+<p>
+I hereby declare all details are correct.
+</p>
 
-    <button type="button" onclick="downloadPDF()">Download PDF</button>
+<br>
 
-    <script>
-        function previewPhoto(event) {
-            const img = document.getElementById('photoPreview');
-            img.src = URL.createObjectURL(event.target.files[0]);
+<!-- SIGNATURE -->
+<table>
+<tr>
+<td>Date: <input type="date" class="required"></td>
+<td>Place: <input class="required"></td>
+<td>Signature: <input class="required"></td>
+</tr>
+</table>
+
+<hr>
+
+<b>For Office use</b> : Verified By ______ Signature & Date ______
+
+</div>
+
+<button onclick="downloadPDF()">Download PDF</button>
+
+<script>
+function previewPhoto(event) {
+    document.getElementById('photoPreview').src = URL.createObjectURL(event.target.files[0]);
+}
+
+function toggleApprenticeship(isRequired) {
+    const fields = document.querySelectorAll(".apprenticeship");
+
+    fields.forEach(field => {
+        if (!isRequired) {
+            field.value = "";
+            field.classList.remove("required-error");
         }
+    });
 
-        function validateForm() {
-            let isValid = true;
-            const fields = document.querySelectorAll(".required");
+    document.getElementById("apprenticeshipSection").style.opacity = isRequired ? "1" : "0.5";
+}
 
-            document.getElementById("errorMsg").innerText = "";
+function validateForm() {
+    let isValid = true;
+    const fields = document.querySelectorAll(".required");
 
-            fields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add("required-error");
-                    isValid = false;
-                } else {
-                    field.classList.remove("required-error");
-                }
-            });
+    document.getElementById("errorMsg").innerText = "";
 
-            if (!isValid) {
-                document.getElementById("errorMsg").innerText = "Please fill all required fields!";
+    fields.forEach(field => {
+        if (!field.value || !field.value.trim()) {
+            field.classList.add("required-error");
+            isValid = false;
+        } else {
+            field.classList.remove("required-error");
+        }
+    });
+
+    const fresher = document.querySelector('input[name="fresher"]:checked');
+
+    if (!fresher) {
+        document.getElementById("errorMsg").innerText = "Select Fresher YES or NO";
+        return false;
+    }
+
+    if (fresher.value === "no") {
+        const apprenticeFields = document.querySelectorAll(".apprenticeship");
+
+        apprenticeFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add("required-error");
+                isValid = false;
             }
+        });
+    }
 
-            return isValid;
-        }
+    if (!isValid) {
+        document.getElementById("errorMsg").innerText = "Please fill all required fields!";
+    }
 
-        function downloadPDF() {
+    return isValid;
+}
 
-            if (!validateForm()) return;
+function downloadPDF() {
+    if (!validateForm()) return;
 
-            const element = document.getElementById('formContent');
+    const element = document.getElementById('formContent');
 
-            html2pdf().set({
-                margin: 0.3,
-                filename: 'Saraswati_Form.pdf',
-                image: { type: 'jpeg', quality: 1 },
-                html2canvas: { scale: 2, useCORS: true },
-                jsPDF: { format: 'a4', orientation: 'portrait' }
-            }).from(element).save();
-        }
-    </script>
+    html2pdf().set({
+        margin: 0.3,
+        filename: 'Saraswat_Form.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { format: 'a4' }
+    }).from(element).save();
+}
+</script>
 
 </body>
-
 </html>
-
