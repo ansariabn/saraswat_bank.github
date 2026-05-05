@@ -4,6 +4,7 @@
 <head>
     <title>Saraswat Bank Application Form</title>
 
+    <!-- PDF LIBRARY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
@@ -41,15 +42,16 @@
             object-fit: cover;
         }
 
+        button {
+            margin: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
         #errorMsg {
             color: red;
             text-align: center;
             font-weight: bold;
-        }
-
-        button {
-            margin: 20px;
-            padding: 10px;
         }
     </style>
 </head>
@@ -76,13 +78,15 @@
 
 <hr>
 
-<!-- BASIC -->
+<!-- BASIC DETAILS -->
 <table>
 <tr>
 <td colspan="3">Name: <input class="required"></td>
 <td rowspan="5">
-<div class="photo-box"><img id="photoPreview"></div>
-<input type="file" onchange="previewPhoto(event)">
+<div class="photo-box">
+<img id="photoPreview">
+</div>
+<input type="file" accept="image/*" onchange="previewPhoto(event)">
 </td>
 </tr>
 
@@ -138,11 +142,19 @@
 <!-- APPRENTICESHIP -->
 <h3>Apprenticeship Experience</h3>
 
+<div style="display:flex; gap:20px;">
 <label><b>Are you Fresher?</b></label>
-<input type="radio" name="fresher" value="yes" onclick="toggleApprenticeship(false)"> YES
-<input type="radio" name="fresher" value="no" onclick="toggleApprenticeship(true)"> NO
 
-<br><br>
+<label>
+<input type="radio" name="fresher" value="yes" onclick="toggleApprenticeship(false)"> YES
+</label>
+
+<label>
+<input type="radio" name="fresher" value="no" onclick="toggleApprenticeship(true)"> NO
+</label>
+</div>
+
+<br>
 
 <table id="apprenticeshipSection">
 <tr>
@@ -178,11 +190,14 @@
 
 <br>
 
-<p>I hereby declare all details are correct.</p>
+<!-- DECLARATION -->
+<p>
+I hereby declare all details are correct.
+</p>
 
 <br>
 
-<!-- SIGN -->
+<!-- SIGNATURE -->
 <table>
 <tr>
 <td>Date: <input type="date" class="required"></td>
@@ -193,7 +208,7 @@
 
 <hr>
 
-<b>For Office use</b> : ________
+<b>For Office use</b> : Verified By ______ Signature & Date ______
 
 </div>
 
@@ -224,11 +239,7 @@ function validateForm() {
     document.getElementById("errorMsg").innerText = "";
 
     fields.forEach(field => {
-
-        // ✅ SAFE CHECK (fix for your error)
-        let value = field.value;
-
-        if (value === undefined || value === null || value.trim() === "") {
+        if (!field.value || !field.value.trim()) {
             field.classList.add("required-error");
             isValid = false;
         } else {
@@ -247,9 +258,7 @@ function validateForm() {
         const apprenticeFields = document.querySelectorAll(".apprenticeship");
 
         apprenticeFields.forEach(field => {
-            let value = field.value;
-
-            if (value === undefined || value === null || value.trim() === "") {
+            if (!field.value.trim()) {
                 field.classList.add("required-error");
                 isValid = false;
             }
@@ -264,25 +273,16 @@ function validateForm() {
 }
 
 function downloadPDF() {
-
-    console.log("Download clicked"); // debug
-
-    if (!validateForm()) {
-        console.log("Validation failed");
-        return;
-    }
+    if (!validateForm()) return;
 
     const element = document.getElementById('formContent');
 
     html2pdf().set({
         margin: 0.3,
         filename: 'Saraswat_Form.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { format: 'a4', orientation: 'portrait' }
+        html2canvas: { scale: 2 },
+        jsPDF: { format: 'a4' }
     }).from(element).save();
-
-    console.log("PDF triggered");
 }
 </script>
 
