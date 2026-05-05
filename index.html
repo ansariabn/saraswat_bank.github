@@ -205,23 +205,30 @@ function previewPhoto(event) {
 }
 
 function toggleApprenticeship(isRequired) {
-    const section = document.getElementById("apprenticeshipSection");
-    section.style.opacity = isRequired ? "1" : "0.5";
+    const fields = document.querySelectorAll(".apprenticeship");
 
-    document.querySelectorAll(".apprenticeship").forEach(f => {
+    fields.forEach(field => {
         if (!isRequired) {
-            f.value = "";
-            f.classList.remove("required-error");
+            field.value = "";
+            field.classList.remove("required-error");
         }
     });
+
+    document.getElementById("apprenticeshipSection").style.opacity = isRequired ? "1" : "0.5";
 }
 
 function validateForm() {
     let isValid = true;
+    const fields = document.querySelectorAll(".required");
+
     document.getElementById("errorMsg").innerText = "";
 
-    document.querySelectorAll(".required").forEach(field => {
-        if (!field.value || field.value.trim() === "") {
+    fields.forEach(field => {
+
+        // ✅ SAFE CHECK (fix for your error)
+        let value = field.value;
+
+        if (value === undefined || value === null || value.trim() === "") {
             field.classList.add("required-error");
             isValid = false;
         } else {
@@ -237,8 +244,12 @@ function validateForm() {
     }
 
     if (fresher.value === "no") {
-        document.querySelectorAll(".apprenticeship").forEach(field => {
-            if (!field.value || field.value.trim() === "") {
+        const apprenticeFields = document.querySelectorAll(".apprenticeship");
+
+        apprenticeFields.forEach(field => {
+            let value = field.value;
+
+            if (value === undefined || value === null || value.trim() === "") {
                 field.classList.add("required-error");
                 isValid = false;
             }
@@ -253,9 +264,25 @@ function validateForm() {
 }
 
 function downloadPDF() {
-    if (!validateForm()) return;
 
-    html2pdf().from(document.getElementById("formContent")).save("form.pdf");
+    console.log("Download clicked"); // debug
+
+    if (!validateForm()) {
+        console.log("Validation failed");
+        return;
+    }
+
+    const element = document.getElementById('formContent');
+
+    html2pdf().set({
+        margin: 0.3,
+        filename: 'Saraswat_Form.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { format: 'a4', orientation: 'portrait' }
+    }).from(element).save();
+
+    console.log("PDF triggered");
 }
 </script>
 
