@@ -4,7 +4,6 @@
 <head>
     <title>Saraswat Bank Application Form</title>
 
-    <!-- PDF LIBRARY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
@@ -42,16 +41,15 @@
             object-fit: cover;
         }
 
-        button {
-            margin: 20px;
-            padding: 10px;
-            font-size: 16px;
-        }
-
         #errorMsg {
             color: red;
             text-align: center;
             font-weight: bold;
+        }
+
+        button {
+            margin: 20px;
+            padding: 10px;
         }
     </style>
 </head>
@@ -78,15 +76,13 @@
 
 <hr>
 
-<!-- BASIC DETAILS -->
+<!-- BASIC -->
 <table>
 <tr>
 <td colspan="3">Name: <input class="required"></td>
 <td rowspan="5">
-<div class="photo-box">
-<img id="photoPreview">
-</div>
-<input type="file" accept="image/*" onchange="previewPhoto(event)">
+<div class="photo-box"><img id="photoPreview"></div>
+<input type="file" onchange="previewPhoto(event)">
 </td>
 </tr>
 
@@ -142,19 +138,11 @@
 <!-- APPRENTICESHIP -->
 <h3>Apprenticeship Experience</h3>
 
-<div style="display:flex; gap:20px;">
 <label><b>Are you Fresher?</b></label>
-
-<label>
 <input type="radio" name="fresher" value="yes" onclick="toggleApprenticeship(false)"> YES
-</label>
-
-<label>
 <input type="radio" name="fresher" value="no" onclick="toggleApprenticeship(true)"> NO
-</label>
-</div>
 
-<br>
+<br><br>
 
 <table id="apprenticeshipSection">
 <tr>
@@ -190,14 +178,11 @@
 
 <br>
 
-<!-- DECLARATION -->
-<p>
-I hereby declare all details are correct.
-</p>
+<p>I hereby declare all details are correct.</p>
 
 <br>
 
-<!-- SIGNATURE -->
+<!-- SIGN -->
 <table>
 <tr>
 <td>Date: <input type="date" class="required"></td>
@@ -208,7 +193,7 @@ I hereby declare all details are correct.
 
 <hr>
 
-<b>For Office use</b> : Verified By ______ Signature & Date ______
+<b>For Office use</b> : ________
 
 </div>
 
@@ -220,26 +205,23 @@ function previewPhoto(event) {
 }
 
 function toggleApprenticeship(isRequired) {
-    const fields = document.querySelectorAll(".apprenticeship");
+    const section = document.getElementById("apprenticeshipSection");
+    section.style.opacity = isRequired ? "1" : "0.5";
 
-    fields.forEach(field => {
+    document.querySelectorAll(".apprenticeship").forEach(f => {
         if (!isRequired) {
-            field.value = "";
-            field.classList.remove("required-error");
+            f.value = "";
+            f.classList.remove("required-error");
         }
     });
-
-    document.getElementById("apprenticeshipSection").style.opacity = isRequired ? "1" : "0.5";
 }
 
 function validateForm() {
     let isValid = true;
-    const fields = document.querySelectorAll(".required");
-
     document.getElementById("errorMsg").innerText = "";
 
-    fields.forEach(field => {
-        if (!field.value || !field.value.trim()) {
+    document.querySelectorAll(".required").forEach(field => {
+        if (!field.value || field.value.trim() === "") {
             field.classList.add("required-error");
             isValid = false;
         } else {
@@ -255,10 +237,8 @@ function validateForm() {
     }
 
     if (fresher.value === "no") {
-        const apprenticeFields = document.querySelectorAll(".apprenticeship");
-
-        apprenticeFields.forEach(field => {
-            if (!field.value.trim()) {
+        document.querySelectorAll(".apprenticeship").forEach(field => {
+            if (!field.value || field.value.trim() === "") {
                 field.classList.add("required-error");
                 isValid = false;
             }
@@ -275,14 +255,7 @@ function validateForm() {
 function downloadPDF() {
     if (!validateForm()) return;
 
-    const element = document.getElementById('formContent');
-
-    html2pdf().set({
-        margin: 0.3,
-        filename: 'Saraswat_Form.pdf',
-        html2canvas: { scale: 2 },
-        jsPDF: { format: 'a4' }
-    }).from(element).save();
+    html2pdf().from(document.getElementById("formContent")).save("form.pdf");
 }
 </script>
 
